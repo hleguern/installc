@@ -1,0 +1,12 @@
+#!/bin/bash
+echo "Initializing lxd..."
+cat node_config | lxd init --preseed
+
+echo "Downloading base image..."
+wget https://storage.surfly.com/surfly-public/d8_base_1c5c2a.tar.gz -O /tmp/image.tar.gz
+
+echo "Importing image to lxd..."
+lxc image import /tmp/image.tar.gz --alias d8_base
+
+echo "Creating surfly container..."
+lxc launch d8_base surflyc

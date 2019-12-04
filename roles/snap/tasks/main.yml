@@ -1,0 +1,24 @@
+- name: Check if snap is installed
+  command: which snap
+  ignore_errors: True
+  register: is_installed
+
+- name: Install snap
+  block:
+    - name: Install snapd-selinux
+      dnf:
+        name:
+          - https://storage.surfly.com/surfly-public/snapd-selinux-2.42.4-0.el8.noarch.rpm
+
+    - name: Install snap-confine
+      dnf:
+        name: https://storage.surfly.com/surfly-public/snap-confine-2.42.4-0.el8.x86_64.rpm
+
+    - name: Install snapd
+      dnf:
+        name: https://storage.surfly.com/surfly-public/snapd-2.42.4-0.el8.x86_64.rpm
+
+    - name: Enable snapd service
+      command: systemctl enable --now snapd.socket
+
+  when: is_installed is failed

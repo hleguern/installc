@@ -1,0 +1,6 @@
+- name: Initialize machine
+  hosts: localhost
+  become: yes
+  roles:
+    - {role: snap, tags: snap}
+    - {role: lxd, tags: lxd}

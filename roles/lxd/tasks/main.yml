@@ -1,0 +1,6 @@
+- name: Install lxd
+  snap:
+    name: lxd
+
+- name: Add user to lxd group
+  command: usermod -a -G lxd {{ ansible_env.SUDO_USER }}

@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo dnf update
+sudo dnf install epel-release
+sudo dnf update
+sudo dnf install python2 ansible
