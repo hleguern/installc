@@ -14,6 +14,8 @@ lxc launch d8_base surflyc
 echo "Configuring container..."
 # Required by runit
 lxc config set surflyc security.privileged true
+# Proxy incoming traffic
 lxc config device add surflyc myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
 lxc config device add surflyc myport443 proxy listen=tcp:0.0.0.0:443 connect=tcp:127.0.0.1:4433 proxy_protocol=true
+
 lxc list
