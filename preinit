@@ -2,4 +2,4 @@
 sudo dnf update
 sudo dnf install epel-release
 sudo dnf update
-sudo dnf install python2 ansible
+sudo dnf install python2 ansible wget
