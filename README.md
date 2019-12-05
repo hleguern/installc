@@ -5,20 +5,19 @@ installc
 Use Surfly on CentOS/RedHat 8
 
 # Initialize server
-Install basic dependencies
-```bash
-./preinit
-```
+- Install basic dependencies
+  ```bash
+  ./preinit
+  ```
 
-Initialize server
-```bash
-ansible-playbook init.yml
-```
+- Initialize server
+  ```bash
+  ansible-playbook init.yml
+  ```
 
-Reboot machine
-```bash
-reboot
-```
+- Reboot machine
 
-Configure container
-- `cat node_config | lxd init --preseed`
+- Configure container
+  ```bash
+  ./postinit
+  ```
