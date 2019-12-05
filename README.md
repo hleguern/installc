@@ -26,3 +26,8 @@ Use Surfly on CentOS/RedHat 8
   ```bash
   lxc restart surflyc
   ```
+
+- Run Surfly installation
+  ```bash
+  ./setupc
+  ```
