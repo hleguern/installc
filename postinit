@@ -16,6 +16,4 @@ echo "Configuring container..."
 lxc config set surflyc security.privileged true
 lxc config device add surflyc myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
 lxc config device add surflyc myport443 proxy listen=tcp:0.0.0.0:443 connect=tcp:127.0.0.1:4433 proxy_protocol=true
-
-echo "Restarting container..."
-sleep 3 && lxc restart surflyc
+lxc list

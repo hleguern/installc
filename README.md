@@ -21,3 +21,8 @@ Use Surfly on CentOS/RedHat 8
   ```bash
   ./postinit
   ```
+
+- Restart container
+  ```bash
+  lxc restart surflyc
+  ```
