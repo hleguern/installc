@@ -60,7 +60,7 @@ Install Surfly on CentOS/RedHat 8
   Every time `./setupc` command is executed, `config.yaml` file is pushed inside the container and used to install/update
   Surfly.
 
-> Check `certificates` configuration option [here](https://docs.surfly.com/installation/#configuration) to configure Surfly to use correct certificates and use the command below to transfer certificates to the container
+  > Check `certificates` configuration option [here](https://docs.surfly.com/installation/#configuration) to configure Surfly to use correct certificates and use the command below to transfer certificates to the container
 
 # Usage
 > You can check the name of the Surfly container in `installc/.container_name` file or by running `lxc list` command
@@ -76,4 +76,10 @@ where `<file>` is the path to the file on the host machine, `<container_name>` i
 ## How to log in to the Surfly container?
 ```bash
 lxc exec <container_name> -- sudo --login --user client
+```
+
+## How to update Surfly?
+Navigate to installc directory and run
+```bash
+./setupc
 ```
