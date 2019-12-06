@@ -10,7 +10,7 @@ networks:
   type: ""
 storage_pools:
 - config:
-    size: 20GB
+    size: 30GB
   description: ""
   name: default
   driver: lvm
