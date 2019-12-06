@@ -10,7 +10,7 @@ Use Surfly on CentOS/RedHat 8
   ./preinit
   ```
 
-- Initialize server
+- Initialize server - install lxd
   ```bash
   ansible-playbook init.yml
   ```
@@ -24,7 +24,7 @@ Use Surfly on CentOS/RedHat 8
 
 - Restart container
   ```bash
-  lxc restart surflyc
+  lxc restart <container_name>
   ```
 
 - Run Surfly installation

@@ -1,4 +1,6 @@
 #!/bin/bash
+CONTAINER_NAME_FILE=.container_name
+
 echo "Initializing lxd..."
 cat node_config | lxd init --preseed
 
@@ -8,14 +10,17 @@ wget https://storage.surfly.com/surfly-public/d8_base.7b9c9f.tar.gz -O /tmp/imag
 echo "Importing image to lxd..."
 lxc image import /tmp/image.tar.gz --alias d8_base
 
+test -f $CONTAINER_NAME_FILE || (echo "Generating container name..." && echo "surflyc-`date +%N`" > $CONTAINER_NAME_FILE)
+CONTAINER_NAME=`cat $CONTAINER_NAME_FILE`
+
 echo "Creating surfly container..."
-lxc launch d8_base surflyc
+lxc launch d8_base $CONTAINER_NAME
 
 echo "Configuring container..."
 # Required by runit
-lxc config set surflyc security.privileged true
+lxc config set $CONTAINER_NAME security.privileged true
 # Proxy incoming traffic
-lxc config device add surflyc myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
-lxc config device add surflyc myport443 proxy listen=tcp:0.0.0.0:443 connect=tcp:127.0.0.1:4433 proxy_protocol=true
+lxc config device add $CONTAINER_NAME myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
+lxc config device add $CONTAINER_NAME myport443 proxy listen=tcp:0.0.0.0:443 connect=tcp:127.0.0.1:4433 proxy_protocol=true
 
 lxc list
