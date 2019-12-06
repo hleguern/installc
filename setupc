@@ -4,10 +4,14 @@ import subprocess
 
 CONFIG_FILE = "config.yaml"
 CONTAINER_NAME = "surflyc"
+CONTAINER_NAME_FILE = ".container_name"
 COMMAND_TEMPLATE = "lxc exec %s -- sudo --login --user client bash -c '" % CONTAINER_NAME + "%s'"
 DEFAULT_CONFIG_TEMPLATE = """client_id: {client_id}
 version: latest
 """
+
+with open(CONTAINER_NAME_FILE, "rb") as f:
+    CONTAINER_NAME = f.read().strip()
 
 
 def main():
