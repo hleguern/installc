@@ -14,7 +14,7 @@ test -f $CONTAINER_NAME_FILE || (echo "Generating container name..." && echo "su
 CONTAINER_NAME=`cat $CONTAINER_NAME_FILE`
 
 echo "Creating surfly container..."
-lxc launch d8_base $CONTAINER_NAME
+lxc init d8_base $CONTAINER_NAME
 
 echo "Configuring container..."
 # Required by runit
@@ -22,5 +22,8 @@ lxc config set $CONTAINER_NAME security.privileged true
 # Proxy incoming traffic
 lxc config device add $CONTAINER_NAME myport80 proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80
 lxc config device add $CONTAINER_NAME myport443 proxy listen=tcp:0.0.0.0:443 connect=tcp:127.0.0.1:4433 proxy_protocol=true
+# Update storage
+lxc config device add $CONTAINER_NAME root disk pool=default path=/ size=40GB
 
+lxc start $CONTAINER_NAME
 lxc list
