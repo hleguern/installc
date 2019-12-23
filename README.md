@@ -71,6 +71,8 @@ lxc file push <file> <container_name>/home/client/install/
 ```
 where `<file>` is the path to the file on the host machine, `<container_name>` is the name of the Surfly container
 
+> If file pull/push fails with the following error `Error: open /tmp/lxd_forkputfile_*: no such file or directory` try to restart lxd `sudo snap resatrt lxd`
+
 ## How to log in to the Surfly container?
 ```bash
 lxc exec <container_name> -- sudo --login --user client
