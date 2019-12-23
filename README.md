@@ -47,11 +47,6 @@ Install Surfly on CentOS/RedHat 8
     ./postinit
     ```
 
-  - Restart container
-    ```bash
-    lxc restart <container_name>
-    ```
-
 - Install Surfly
   ```bash
   ./setupc
