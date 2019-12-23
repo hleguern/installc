@@ -8,7 +8,7 @@ Install Surfly on CentOS/RedHat 8
  - CentOS/RedHat 8
  - 4 core 2.5 GHz CPU
  - 8 GB RAM
- - 60 GB Disk space
+ - 80 GB Disk space
  - 100Mbps network connection
 
 # Installation
