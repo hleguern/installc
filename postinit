@@ -1,8 +1,9 @@
 #!/bin/bash
 CONTAINER_NAME_FILE=.container_name
+POOL_SIZE=${1:-50GB}
 
 echo "Initializing lxd..."
-cat node_config | lxd init --preseed
+cat node_config | sed 's/{{POOL_SIZE}}/'"$POOL_SIZE"'/g' | lxd init --preseed
 
 echo "Downloading base image..."
 wget https://storage.surfly.com/surfly-public/d8_base.7b9c9f.tar.gz -O /tmp/image.tar.gz

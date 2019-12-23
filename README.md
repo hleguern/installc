@@ -46,6 +46,9 @@ Install Surfly on CentOS/RedHat 8
     ```bash
     ./postinit
     ```
+    > Default storage size is 50GB. You can modify it by passing a new value to `postinit` script:
+    >
+    > `./postinit 60GB`
 
 - Install Surfly
   ```bash
